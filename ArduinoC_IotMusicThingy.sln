@@ -5,7 +5,13 @@ VisualStudioVersion = 16.0.31112.23
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ArduinoC_IotMusicThingy", "ArduinoC_IotMusicThingy.vcxproj", "{C5F80730-F44F-4478-BDAE-6634EFC2CA88}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Keypad-3.1.1", "Libraries\Keypad\3.1.1\Keypad\Keypad-3.1.1.vcxitems", "{1DD3E07F-8901-4E3F-B449-3416EADFDBB0}"
+EndProject
 Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		Libraries\Keypad\3.1.1\Keypad\Keypad-3.1.1.vcxitems*{1dd3e07f-8901-4e3f-b449-3416eadfdbb0}*SharedItemsImports = 9
+		Libraries\Keypad\3.1.1\Keypad\Keypad-3.1.1.vcxitems*{c5f80730-f44f-4478-bdae-6634efc2ca88}*SharedItemsImports = 4
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
 		Release|x86 = Release|x86
