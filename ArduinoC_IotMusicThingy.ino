@@ -6,7 +6,7 @@
 
 #include <Keypad.h>
 #include <Key.h>
-
+#include <pitches.h>
 
 const int ROW_NUM = 4; //four rows
 const int COLUMN_NUM = 4; //four columns
