@@ -112,7 +112,13 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Keypad\Key.h" />
+    <ClInclude Include="Keypad\Keypad.h" />
     <ClInclude Include="__vm\.ArduinoC_IotMusicThingy.vsarduino.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Keypad\Key.cpp" />
+    <ClCompile Include="Keypad\Keypad.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
