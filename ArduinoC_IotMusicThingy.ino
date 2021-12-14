@@ -6,7 +6,7 @@
 
 #include <Keypad.h>
 #include <Key.h>
-#include <pitches.h>
+#include "pitches.h"
 
 const int ROW_NUM = 4; //four rows
 const int COLUMN_NUM = 4; //four columns
@@ -28,7 +28,15 @@ void setup() {
 
 // the loop function runs over and over again until power down or reset
 void loop() {
-	char key = keypad.getKey();
+	char key = ;
+		
+		if (!keypad.ispressed(key))
+		{
+			key = keypad.getKey();
+			keypad.key->kstate;
+			keypad.getState();
+			
+		} 
 
 	if (key) {
 		Serial.println(key);

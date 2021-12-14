@@ -21,6 +21,9 @@
     <ClInclude Include="__vm\.ArduinoC_IotMusicThingy.vsarduino.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="pitches.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="Keypad\keywords.txt" />
