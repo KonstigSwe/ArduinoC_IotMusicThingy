@@ -27,6 +27,112 @@ Keypad keypad = Keypad(makeKeymap(keys), pin_rows, pin_column, ROW_NUM, COLUMN_N
 char holdKey;
 unsigned long t_hold;
 
+//Ugly hardcoded melodies
+
+void flamingo() {
+	//16th note at 89 BPM: 169 ms
+	//bar 1
+	tone(BUZZER_PIN, NOTE_GS4, 169);
+	delay(169);
+	tone(BUZZER_PIN, NOTE_AS4, 169);
+	delay(169);
+	tone(BUZZER_PIN, NOTE_C5, 169);
+	delay(169);
+	tone(BUZZER_PIN, NOTE_DS5, 169);
+	delay(169 * 2);
+	tone(BUZZER_PIN, NOTE_F5, 169);
+	delay(169 * 2);
+	tone(BUZZER_PIN, NOTE_F5, 169 / 2);
+	delay(169 / 2);
+	tone(BUZZER_PIN, NOTE_G5, 169 / 2);
+	delay(169 / 2);
+	tone(BUZZER_PIN, NOTE_F5, 169);
+	delay(169 * 2);
+	tone(BUZZER_PIN, NOTE_DS5, 169);
+	delay(169 * 2);
+	tone(BUZZER_PIN, NOTE_C5, 169);
+	delay(169 * 2);
+	tone(BUZZER_PIN, NOTE_F5, 169);
+	delay(169 * 2);
+	//bar 2
+	tone(BUZZER_PIN, NOTE_DS5, 169 * 2);
+	delay(169 * 3);
+	tone(BUZZER_PIN, NOTE_G4, 169);
+	delay(169);
+	tone(BUZZER_PIN, NOTE_GS4, 169);
+	delay(169);
+	tone(BUZZER_PIN, NOTE_AS4, 169);
+	delay(169);
+	tone(BUZZER_PIN, NOTE_C5, 169);
+	delay(169);
+	tone(BUZZER_PIN, NOTE_DS5, 169);
+	delay(169 * 2);
+	tone(BUZZER_PIN, NOTE_F5, 169);
+	delay(169 * 2);
+	tone(BUZZER_PIN, NOTE_F5, 169 / 2);
+	delay(169 / 2);
+	tone(BUZZER_PIN, NOTE_G5, 169 / 2);
+	delay(169 / 2);
+	tone(BUZZER_PIN, NOTE_F5, 169);
+	delay(169 * 2);
+	tone(BUZZER_PIN, NOTE_DS5, 169);
+	delay(169 * 2);
+	//bar 3
+	tone(BUZZER_PIN, NOTE_D5, 169 * 4);
+	delay(169 * 4);
+	tone(BUZZER_PIN, NOTE_AS4, 169 * 2);
+	delay(169 * 3);
+	tone(BUZZER_PIN, NOTE_AS4, 169);
+	delay(169);
+	tone(BUZZER_PIN, NOTE_G4, 169);
+	delay(169);
+	tone(BUZZER_PIN, NOTE_C5, 169);
+	delay(169);
+	tone(BUZZER_PIN, NOTE_G4, 169);
+	delay(169);
+	tone(BUZZER_PIN, NOTE_C5, 169);
+	delay(169);
+	tone(BUZZER_PIN, NOTE_AS4, 169 * 2);
+	delay(169 * 3);
+	tone(BUZZER_PIN, NOTE_D4, 169 / 2);
+	delay(169 / 2);
+	tone(BUZZER_PIN, NOTE_DS4, 169 / 2);
+	delay(169 / 2);
+	//bar 4
+	tone(BUZZER_PIN, NOTE_F4, 169);
+	delay(169);
+	tone(BUZZER_PIN, NOTE_GS4, 169);
+	delay(169);
+	tone(BUZZER_PIN, NOTE_DS5, 169);
+	delay(169);
+	tone(BUZZER_PIN, NOTE_F4, 169);
+	delay(169);
+	tone(BUZZER_PIN, NOTE_GS4, 169);
+	delay(169);
+	tone(BUZZER_PIN, NOTE_DS5, 169);
+	delay(169);
+	tone(BUZZER_PIN, NOTE_F4, 169);
+	delay(169);
+	tone(BUZZER_PIN, NOTE_DS5, 169);
+	delay(169);
+	tone(BUZZER_PIN, NOTE_DS5, 169);
+	delay(169);
+	tone(BUZZER_PIN, NOTE_F4, 169);
+	delay(169);
+	tone(BUZZER_PIN, NOTE_DS5, 169);
+	delay(169);
+	tone(BUZZER_PIN, NOTE_F4, 169);
+	delay(169);
+	tone(BUZZER_PIN, NOTE_GS4, 169);
+	delay(169);
+	tone(BUZZER_PIN, NOTE_F4, 169);
+	delay(169);
+	tone(BUZZER_PIN, NOTE_G4, 169);
+	delay(169);
+	tone(BUZZER_PIN, NOTE_AS4, 169);
+	delay(169);
+}
+
 void setup() {
 	pinMode(BUZZER_PIN, OUTPUT);
 	Serial.begin(9600);
@@ -35,11 +141,11 @@ void setup() {
 // the loop function runs over and over again until power down or reset
 void loop() {
 	char key = keypad.getKey();
-	
+
 	if (keypad.keyStateChanged()) {
 		int note;
 		Serial.print(key);
-		switch (key ) {
+		switch (key) {
 		case '1':
 			note = NOTE_C4;
 			break;
@@ -76,14 +182,18 @@ void loop() {
 		case 'C':
 			note = NOTE_B4;
 			break;
+		case '*':
+			flamingo();
+			break;
 		}
-			switch (keypad.getState()) {
-			case PRESSED:
-				tone(BUZZER_PIN, note);
-				break;
-			case RELEASED:
-				noTone(BUZZER_PIN);
-				break;
-			}
+
+		switch (keypad.getState()) {
+		case PRESSED:
+			tone(BUZZER_PIN, note);
+			break;
+		case RELEASED:
+			noTone(BUZZER_PIN);
+			break;
+		}
 	}
 }
