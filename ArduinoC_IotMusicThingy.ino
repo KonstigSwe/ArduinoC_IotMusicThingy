@@ -49,69 +49,106 @@ void loop() {
 					tone(BUZZER_PIN, 840, 100);
 					break;
 				}*/
+				//}
 			//}
-		//}
-		//tone(BUZZER_PIN, 432, 500);
-		//Serial.println(key);'
-	for (int n = 0; n < LIST_MAX; ++n) {
-		if (keypad.key[n].stateChanged) {
+			//tone(BUZZER_PIN, 432, 500);
+			//Serial.println(key);'
+	if (keypad.keyStateChanged()) {
 			//Serial.print(keypad.key[n].kstate);
-			switch (keypad.key[n].kstate) {
-			case PRESSED :
-				//tone(BUZZER_PIN);
-				Serial.write("Pressed");
-				tone(BUZZER_PIN, NOTE_COLLECTION[n]);
-				Serial.print(NOTE_COLLECTION[n]);
-				break;
-			//case HOLD: 
-			//	Serial.write("Hold Tha Door");
-			//	//tone(BUZZER_PIN, 420 + random(100, 1000));
-			//	break;
-			case IDLE:
-				noTone(BUZZER_PIN);
-				Serial.write("idle");
-				break;
-			
-			}
-		}
-	}
-		/*switch (key) {
+		int note;
+		Serial.print(key);
+		switch (key ) {
 		case '1':
-			tone(BUZZER_PIN, NOTE_C4, 150);
+			note = NOTE_C4;
 			break;
 		case '2':
-			tone(BUZZER_PIN, NOTE_CS4, 150);
+			note = NOTE_CS4;
 			break;
 		case '3':
-			tone(BUZZER_PIN, NOTE_D4, 150);
+			note = NOTE_D4;
 			break;
 		case 'A':
-			tone(BUZZER_PIN, NOTE_DS4, 150);
+			note = NOTE_DS4;
 			break;
 		case '4':
-			tone(BUZZER_PIN, NOTE_E4, 150);
+			note = NOTE_E4;
 			break;
 		case '5':
-			tone(BUZZER_PIN, NOTE_F4, 150);
+			note = NOTE_F4;
 			break;
 		case '6':
-			tone(BUZZER_PIN, NOTE_FS4, 150);
+			note = NOTE_FS4;
 			break;
 		case 'B':
-			tone(BUZZER_PIN, NOTE_G4, 150);
+			note = NOTE_G4;
 			break;
 		case '7':
-			tone(BUZZER_PIN, NOTE_GS4, 150);
+			note = NOTE_GS4;
 			break;
 		case '8':
-			tone(BUZZER_PIN, NOTE_A4, 150);
+			note = NOTE_A4;
 			break;
 		case '9':
-			tone(BUZZER_PIN, NOTE_AS4, 150);
+			note = NOTE_AS4;
 			break;
 		case 'C':
-			tone(BUZZER_PIN, NOTE_B4, 150);
+			note = NOTE_B4;
 			break;
-		}*/
+		}
+			switch (keypad.getState()) {
+			case PRESSED:
+				//tone(BUZZER_PIN);
+				//Serial.write("Pressed");
+				tone(BUZZER_PIN, note);
+				break;
+				//case HOLD: 
+				//	Serial.write("Hold Tha Door");
+				//	//tone(BUZZER_PIN, 420 + random(100, 1000));
+				//	break;
+			case RELEASED:
+				noTone(BUZZER_PIN);
+				//Serial.write("idle");
+				break;
+
+			}
+	}
+	/*switch (key) {
+	case '1':
+		tone(BUZZER_PIN, NOTE_C4, 150);
+		break;
+	case '2':
+		tone(BUZZER_PIN, NOTE_CS4, 150);
+		break;
+	case '3':
+		tone(BUZZER_PIN, NOTE_D4, 150);
+		break;
+	case 'A':
+		tone(BUZZER_PIN, NOTE_DS4, 150);
+		break;
+	case '4':
+		tone(BUZZER_PIN, NOTE_E4, 150);
+		break;
+	case '5':
+		tone(BUZZER_PIN, NOTE_F4, 150);
+		break;
+	case '6':
+		tone(BUZZER_PIN, NOTE_FS4, 150);
+		break;
+	case 'B':
+		tone(BUZZER_PIN, NOTE_G4, 150);
+		break;
+	case '7':
+		tone(BUZZER_PIN, NOTE_GS4, 150);
+		break;
+	case '8':
+		tone(BUZZER_PIN, NOTE_A4, 150);
+		break;
+	case '9':
+		tone(BUZZER_PIN, NOTE_AS4, 150);
+		break;
+	case 'C':
+		tone(BUZZER_PIN, NOTE_B4, 150);
+		break;
+	}*/
 	//}
 }
