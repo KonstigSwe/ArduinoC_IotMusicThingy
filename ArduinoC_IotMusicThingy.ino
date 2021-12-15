@@ -11,6 +11,7 @@
 const int ROW_NUM = 4; //four rows
 const int COLUMN_NUM = 4; //four columns
 const int BUZZER_PIN = 13;
+const int NOTE_COLLECTION[12]{ NOTE_C4 , NOTE_CS4, NOTE_D4,NOTE_DS4,NOTE_E4,NOTE_F4,NOTE_FS4,NOTE_G4,NOTE_GS4,NOTE_A4,NOTE_AS4,NOTE_B4 };
 
 char keys[ROW_NUM][COLUMN_NUM] = {
   {'1','2','3', 'A'},
@@ -54,24 +55,23 @@ void loop() {
 		//Serial.println(key);'
 	for (int n = 0; n < LIST_MAX; ++n) {
 		if (keypad.key[n].stateChanged) {
-			Serial.print(keypad.key[n].kstate);
+			//Serial.print(keypad.key[n].kstate);
 			switch (keypad.key[n].kstate) {
 			case PRESSED :
 				//tone(BUZZER_PIN);
 				Serial.write("Pressed");
-				tone(BUZZER_PIN, 420 + random(100, 1000));
+				tone(BUZZER_PIN, NOTE_COLLECTION[n]);
+				Serial.print(NOTE_COLLECTION[n]);
 				break;
-			case HOLD: 
-				Serial.write("Hold Tha Door");
-				tone(BUZZER_PIN, 420 + random(100, 1000));
-				break;
+			//case HOLD: 
+			//	Serial.write("Hold Tha Door");
+			//	//tone(BUZZER_PIN, 420 + random(100, 1000));
+			//	break;
 			case IDLE:
 				noTone(BUZZER_PIN);
 				Serial.write("idle");
 				break;
-			default:
-				noTone(BUZZER_PIN);
-				break;
+			
 			}
 		}
 	}
