@@ -11,7 +11,6 @@
 const int ROW_NUM = 4; //four rows
 const int COLUMN_NUM = 4; //four columns
 const int BUZZER_PIN = 13;
-const int NOTE_COLLECTION[12]{ NOTE_C4 , NOTE_CS4, NOTE_D4,NOTE_DS4,NOTE_E4,NOTE_F4,NOTE_FS4,NOTE_G4,NOTE_GS4,NOTE_A4,NOTE_AS4,NOTE_B4 };
 
 char keys[ROW_NUM][COLUMN_NUM] = {
   {'1','2','3', 'A'},
@@ -36,25 +35,8 @@ void setup() {
 // the loop function runs over and over again until power down or reset
 void loop() {
 	char key = keypad.getKey();
-	//if (key) {
-		/*holdKey = key;*/
-
-		//if (keypad.getState() == HOLD) {
-			//if (millis() - t_hold > 100) {
-			/*	switch (holdKey) {
-				case '1':
-					tone(BUZZER_PIN, 420, 100);
-					break;
-				case '2':
-					tone(BUZZER_PIN, 840, 100);
-					break;
-				}*/
-				//}
-			//}
-			//tone(BUZZER_PIN, 432, 500);
-			//Serial.println(key);'
+	
 	if (keypad.keyStateChanged()) {
-			//Serial.print(keypad.key[n].kstate);
 		int note;
 		Serial.print(key);
 		switch (key ) {
@@ -97,58 +79,12 @@ void loop() {
 		}
 			switch (keypad.getState()) {
 			case PRESSED:
-				//tone(BUZZER_PIN);
-				//Serial.write("Pressed");
 				tone(BUZZER_PIN, note);
 				break;
-				//case HOLD: 
-				//	Serial.write("Hold Tha Door");
-				//	//tone(BUZZER_PIN, 420 + random(100, 1000));
-				//	break;
 			case RELEASED:
 				noTone(BUZZER_PIN);
-				//Serial.write("idle");
 				break;
 
 			}
 	}
-	/*switch (key) {
-	case '1':
-		tone(BUZZER_PIN, NOTE_C4, 150);
-		break;
-	case '2':
-		tone(BUZZER_PIN, NOTE_CS4, 150);
-		break;
-	case '3':
-		tone(BUZZER_PIN, NOTE_D4, 150);
-		break;
-	case 'A':
-		tone(BUZZER_PIN, NOTE_DS4, 150);
-		break;
-	case '4':
-		tone(BUZZER_PIN, NOTE_E4, 150);
-		break;
-	case '5':
-		tone(BUZZER_PIN, NOTE_F4, 150);
-		break;
-	case '6':
-		tone(BUZZER_PIN, NOTE_FS4, 150);
-		break;
-	case 'B':
-		tone(BUZZER_PIN, NOTE_G4, 150);
-		break;
-	case '7':
-		tone(BUZZER_PIN, NOTE_GS4, 150);
-		break;
-	case '8':
-		tone(BUZZER_PIN, NOTE_A4, 150);
-		break;
-	case '9':
-		tone(BUZZER_PIN, NOTE_AS4, 150);
-		break;
-	case 'C':
-		tone(BUZZER_PIN, NOTE_B4, 150);
-		break;
-	}*/
-	//}
 }
