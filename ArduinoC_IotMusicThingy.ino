@@ -84,7 +84,6 @@ void loop() {
 			case RELEASED:
 				noTone(BUZZER_PIN);
 				break;
-
 			}
 	}
 }
