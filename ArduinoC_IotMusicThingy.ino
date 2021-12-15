@@ -36,40 +36,45 @@ void setup() {
 void loop() {
 	char key = keypad.getKey();
 	//if (key) {
-		holdKey = key;
+		/*holdKey = key;*/
 
 		//if (keypad.getState() == HOLD) {
 			//if (millis() - t_hold > 100) {
-				switch (holdKey) {
+			/*	switch (holdKey) {
 				case '1':
 					tone(BUZZER_PIN, 420, 100);
 					break;
 				case '2':
 					tone(BUZZER_PIN, 840, 100);
 					break;
-				}
+				}*/
 			//}
 		//}
 		//tone(BUZZER_PIN, 432, 500);
 		//Serial.println(key);'
-		//for(int n = 0; n < LIST_MAX; ++n){
-		//	//if (keypad.key[n].stateChanged) {
-		//		Serial.print(keypad.key[n].kstate);
-		//		switch (keypad.key[n].kstate) {
-		//		case PRESSED:
-		//			//noTone(BUZZER_PIN);
-
-		//			tone(BUZZER_PIN, 420 + random(100, 1000));
-		//			break;
-		//		case IDLE:
-		//			noTone(BUZZER_PIN);
-		//			break;
-		//		default:
-		//			noTone(BUZZER_PIN);
-		//			break;
-		//		}
-		//	//}
-		//}
+	for (int n = 0; n < LIST_MAX; ++n) {
+		if (keypad.key[n].stateChanged) {
+			Serial.print(keypad.key[n].kstate);
+			switch (keypad.key[n].kstate) {
+			case PRESSED :
+				//tone(BUZZER_PIN);
+				Serial.write("Pressed");
+				tone(BUZZER_PIN, 420 + random(100, 1000));
+				break;
+			case HOLD: 
+				Serial.write("Hold Tha Door");
+				tone(BUZZER_PIN, 420 + random(100, 1000));
+				break;
+			case IDLE:
+				noTone(BUZZER_PIN);
+				Serial.write("idle");
+				break;
+			default:
+				noTone(BUZZER_PIN);
+				break;
+			}
+		}
+	}
 		/*switch (key) {
 		case '1':
 			tone(BUZZER_PIN, NOTE_C4, 150);
