@@ -27,34 +27,45 @@ Keypad keypad = Keypad(makeKeymap(keys), pin_rows, pin_column, ROW_NUM, COLUMN_N
 char holdKey;
 unsigned long t_hold;
 
+struct note {
+	int frequency;
+	int duration;
+	int delay; //tone() doesn't wait for previous note to finish, so we manually wait a while.
+};
+
 //Ugly hardcoded melodies
 
 void flamingo() {
 	//16th note at 89 BPM: 169 ms
 	//bar 1
-	int NoteArray[55]{ NOTE_GS4 ,NOTE_AS4 ,NOTE_C5,NOTE_DS5,NOTE_F5, NOTE_F5 ,NOTE_G5,NOTE_F5,NOTE_DS5,NOTE_C5,NOTE_F5,NOTE_DS5,NOTE_G4,NOTE_GS4,NOTE_AS4,NOTE_C5,NOTE_DS5,
-		NOTE_F5,NOTE_F5 ,NOTE_G5,NOTE_F5 ,NOTE_DS5,NOTE_D5,NOTE_AS4,NOTE_AS4,NOTE_G4,NOTE_C5,NOTE_G4,NOTE_C5,NOTE_AS4,NOTE_D4,NOTE_DS4 ,NOTE_F4,NOTE_GS4,NOTE_DS5,NOTE_F4,NOTE_GS4,NOTE_DS5,NOTE_F4
+	int NoteArray[]{ NOTE_GS4 ,NOTE_AS4 ,NOTE_C5,NOTE_DS5,NOTE_F5, NOTE_F5 ,NOTE_G5,NOTE_F5,NOTE_DS5,NOTE_C5,NOTE_F5,NOTE_DS5,NOTE_G4,NOTE_GS4,NOTE_AS4,NOTE_C5,NOTE_DS5,
+		NOTE_F5,NOTE_F5 ,NOTE_G5,NOTE_F5 ,NOTE_DS5,NOTE_D5,NOTE_AS4, NOTE_G4,NOTE_C5,NOTE_G4,NOTE_C5,NOTE_AS4,NOTE_D4,NOTE_DS4 ,NOTE_F4,NOTE_GS4,NOTE_DS5,NOTE_F4,NOTE_GS4,NOTE_DS5,NOTE_F4
 	,NOTE_DS5,NOTE_DS5,NOTE_F4, NOTE_DS5,NOTE_F4,NOTE_AS4,NOTE_F4,NOTE_G4,NOTE_AS4, NOTE_F4, NOTE_GS4, NOTE_DS5, NOTE_F4, NOTE_C5, NOTE_D5, NOTE_DS5};
-	int NoteTime[55]{ 169,169,169,169,169,169 / 2,169 / 2,169,169,169,169,169 * 2,169,169,169,169,169,169,169 / 2,169 / 2,169,169,169 * 4,169 * 2,169,169,169,169,169,169 * 2,169 / 2,169 / 2,
+	int NoteTime[]{ 169,169,169,169,169,169 / 2,169 / 2,169,169,169,169,169 * 2,169,169,169,169,169,169,169 / 2,169 / 2,169,169,169 * 4, 169 * 2,169*1.5, 169,169,169,169 * 2,169 / 2,169 / 2,
 	169,169,169,169,169,169,169,169,169,169,169,169,169,169,169,169, 169, 169 , 169 , 169 , 169 , 169, 169*2};
 
-	int DelayTime[55]{ 169,169,169,169 * 2,169 * 2,169 / 2,169 / 2,169 * 2,169 * 2,169 * 2,169 * 2,169 * 3,169,169,169,169,169 * 2,169 * 2,169 / 2,169 / 2,169 * 2,169 * 2,169 * 4
-		,169 * 3,169,169,169,169,169,169 * 3,169 / 2,169 / 2,
+	int DelayTime[]{ 169,169,169,169 * 2,169 * 2,169 / 2,169 / 2,169 * 2,169 * 2,169 * 2,169 * 2,169 * 3,169,169,169,169,169 * 2,169 * 2,169 / 2,169 / 2,169 * 2,169 * 2,169 * 4
+		,169 * 3,169*2, 169,169,169,169 * 3,169 / 2,169 / 2,
 	169,169,169,169,169,169,169,169,169,169,169,169,169,169,169,169, 169, 169, 169, 169, 169*2, 169 * 2, 169 * 2};
-	for (int i = 0; i <48; i++)
+	for (int i = 0; i < 47; i++)
 	{
 		tone(BUZZER_PIN, NoteArray[i], NoteTime[i]);
 		delay(DelayTime[i]);
 	}
-	for (int i = 0; i < 32; i++)
+	for (int i = 0; i < 31; i++)
 	{
 		tone(BUZZER_PIN, NoteArray[i], NoteTime[i]);
 		delay(DelayTime[i]);
 	}
-	for (int i = 48; i < 55; ++i) {
+	for (int i = 47; i < 54; ++i) {
 		tone(BUZZER_PIN, NoteArray[i], NoteTime[i]);
 		delay(DelayTime[i]);
 	}
+}
+
+void rickroll() {
+	tone(BUZZER_PIN,500, 1000000);
+	delay(100);
 }
 
 void setup() {
@@ -107,7 +118,13 @@ void loop() {
 			note = NOTE_B4;
 			break;
 		case '*':
+			note = NOTE_B3;
+			break;
+		case '0':
 			flamingo();
+			break;
+		case '#':
+			rickroll();
 			break;
 		}
 
