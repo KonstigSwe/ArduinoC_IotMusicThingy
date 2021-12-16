@@ -60,7 +60,7 @@ void flamingo() {
 		{NOTE_F4, t16th, t16th}, {NOTE_GS4, t16th, t16th}, {NOTE_DS5, t16th, t16th}, {NOTE_F4, t16th, t16th},
 		{NOTE_GS4, t16th, t16th}, {NOTE_DS5, t16th, t16th}, {NOTE_F4, t16th, t16th}, {NOTE_DS5, t16th, t16th},
 		{NOTE_DS5, t16th, t16th}, {NOTE_F4, t16th, t16th}, {NOTE_DS5, t16th, t16th}, {NOTE_F4, t16th, t16th},
-		{NOTE_DS5, t16th, t16th}, {NOTE_F4, t16th, t16th}, {NOTE_G4, t16th, t16th}, {NOTE_AS4, t16th, t16th},
+		{NOTE_G4, t16th, t16th}, {NOTE_DS5, t16th, t16th}, {NOTE_G4, t16th, t16th}, {NOTE_AS4, t16th, t16th},
 		//Bar 8
 		{NOTE_F4, t16th, t16th}, {NOTE_GS4, t16th, t16th}, {NOTE_DS5, t16th, t16th}, {NOTE_F4, t16th, t16th},
 		{NOTE_C5, t16th, t8th}, {NOTE_D5, t16th, t8th}, {NOTE_DS5, t8th, t8th}
