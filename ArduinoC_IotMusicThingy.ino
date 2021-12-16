@@ -32,105 +32,29 @@ unsigned long t_hold;
 void flamingo() {
 	//16th note at 89 BPM: 169 ms
 	//bar 1
-	tone(BUZZER_PIN, NOTE_GS4, 169);
-	delay(169);
-	tone(BUZZER_PIN, NOTE_AS4, 169);
-	delay(169);
-	tone(BUZZER_PIN, NOTE_C5, 169);
-	delay(169);
-	tone(BUZZER_PIN, NOTE_DS5, 169);
-	delay(169 * 2);
-	tone(BUZZER_PIN, NOTE_F5, 169);
-	delay(169 * 2);
-	tone(BUZZER_PIN, NOTE_F5, 169 / 2);
-	delay(169 / 2);
-	tone(BUZZER_PIN, NOTE_G5, 169 / 2);
-	delay(169 / 2);
-	tone(BUZZER_PIN, NOTE_F5, 169);
-	delay(169 * 2);
-	tone(BUZZER_PIN, NOTE_DS5, 169);
-	delay(169 * 2);
-	tone(BUZZER_PIN, NOTE_C5, 169);
-	delay(169 * 2);
-	tone(BUZZER_PIN, NOTE_F5, 169);
-	delay(169 * 2);
-	//bar 2
-	tone(BUZZER_PIN, NOTE_DS5, 169 * 2);
-	delay(169 * 3);
-	tone(BUZZER_PIN, NOTE_G4, 169);
-	delay(169);
-	tone(BUZZER_PIN, NOTE_GS4, 169);
-	delay(169);
-	tone(BUZZER_PIN, NOTE_AS4, 169);
-	delay(169);
-	tone(BUZZER_PIN, NOTE_C5, 169);
-	delay(169);
-	tone(BUZZER_PIN, NOTE_DS5, 169);
-	delay(169 * 2);
-	tone(BUZZER_PIN, NOTE_F5, 169);
-	delay(169 * 2);
-	tone(BUZZER_PIN, NOTE_F5, 169 / 2);
-	delay(169 / 2);
-	tone(BUZZER_PIN, NOTE_G5, 169 / 2);
-	delay(169 / 2);
-	tone(BUZZER_PIN, NOTE_F5, 169);
-	delay(169 * 2);
-	tone(BUZZER_PIN, NOTE_DS5, 169);
-	delay(169 * 2);
-	//bar 3
-	tone(BUZZER_PIN, NOTE_D5, 169 * 4);
-	delay(169 * 4);
-	tone(BUZZER_PIN, NOTE_AS4, 169 * 2);
-	delay(169 * 3);
-	tone(BUZZER_PIN, NOTE_AS4, 169);
-	delay(169);
-	tone(BUZZER_PIN, NOTE_G4, 169);
-	delay(169);
-	tone(BUZZER_PIN, NOTE_C5, 169);
-	delay(169);
-	tone(BUZZER_PIN, NOTE_G4, 169);
-	delay(169);
-	tone(BUZZER_PIN, NOTE_C5, 169);
-	delay(169);
-	tone(BUZZER_PIN, NOTE_AS4, 169 * 2);
-	delay(169 * 3);
-	tone(BUZZER_PIN, NOTE_D4, 169 / 2);
-	delay(169 / 2);
-	tone(BUZZER_PIN, NOTE_DS4, 169 / 2);
-	delay(169 / 2);
-	//bar 4
-	tone(BUZZER_PIN, NOTE_F4, 169);
-	delay(169);
-	tone(BUZZER_PIN, NOTE_GS4, 169);
-	delay(169);
-	tone(BUZZER_PIN, NOTE_DS5, 169);
-	delay(169);
-	tone(BUZZER_PIN, NOTE_F4, 169);
-	delay(169);
-	tone(BUZZER_PIN, NOTE_GS4, 169);
-	delay(169);
-	tone(BUZZER_PIN, NOTE_DS5, 169);
-	delay(169);
-	tone(BUZZER_PIN, NOTE_F4, 169);
-	delay(169);
-	tone(BUZZER_PIN, NOTE_DS5, 169);
-	delay(169);
-	tone(BUZZER_PIN, NOTE_DS5, 169);
-	delay(169);
-	tone(BUZZER_PIN, NOTE_F4, 169);
-	delay(169);
-	tone(BUZZER_PIN, NOTE_DS5, 169);
-	delay(169);
-	tone(BUZZER_PIN, NOTE_F4, 169);
-	delay(169);
-	tone(BUZZER_PIN, NOTE_GS4, 169);
-	delay(169);
-	tone(BUZZER_PIN, NOTE_F4, 169);
-	delay(169);
-	tone(BUZZER_PIN, NOTE_G4, 169);
-	delay(169);
-	tone(BUZZER_PIN, NOTE_AS4, 169);
-	delay(169);
+	int NoteArray[55]{ NOTE_GS4 ,NOTE_AS4 ,NOTE_C5,NOTE_DS5,NOTE_F5, NOTE_F5 ,NOTE_G5,NOTE_F5,NOTE_DS5,NOTE_C5,NOTE_F5,NOTE_DS5,NOTE_G4,NOTE_GS4,NOTE_AS4,NOTE_C5,NOTE_DS5,
+		NOTE_F5,NOTE_F5 ,NOTE_G5,NOTE_F5 ,NOTE_DS5,NOTE_D5,NOTE_AS4,NOTE_AS4,NOTE_G4,NOTE_C5,NOTE_G4,NOTE_C5,NOTE_AS4,NOTE_D4,NOTE_DS4 ,NOTE_F4,NOTE_GS4,NOTE_DS5,NOTE_F4,NOTE_GS4,NOTE_DS5,NOTE_F4
+	,NOTE_DS5,NOTE_DS5,NOTE_F4, NOTE_DS5,NOTE_F4,NOTE_AS4,NOTE_F4,NOTE_G4,NOTE_AS4, NOTE_F4, NOTE_GS4, NOTE_DS5, NOTE_F4, NOTE_C5, NOTE_D5, NOTE_DS5};
+	int NoteTime[55]{ 169,169,169,169,169,169 / 2,169 / 2,169,169,169,169,169 * 2,169,169,169,169,169,169,169 / 2,169 / 2,169,169,169 * 4,169 * 2,169,169,169,169,169,169 * 2,169 / 2,169 / 2,
+	169,169,169,169,169,169,169,169,169,169,169,169,169,169,169,169, 169, 169 , 169 , 169 , 169 , 169, 169*2};
+
+	int DelayTime[55]{ 169,169,169,169 * 2,169 * 2,169 / 2,169 / 2,169 * 2,169 * 2,169 * 2,169 * 2,169 * 3,169,169,169,169,169 * 2,169 * 2,169 / 2,169 / 2,169 * 2,169 * 2,169 * 4
+		,169 * 3,169,169,169,169,169,169 * 3,169 / 2,169 / 2,
+	169,169,169,169,169,169,169,169,169,169,169,169,169,169,169,169, 169, 169, 169, 169, 169*2, 169 * 2, 169 * 2};
+	for (int i = 0; i <48; i++)
+	{
+		tone(BUZZER_PIN, NoteArray[i], NoteTime[i]);
+		delay(DelayTime[i]);
+	}
+	for (int i = 0; i < 32; i++)
+	{
+		tone(BUZZER_PIN, NoteArray[i], NoteTime[i]);
+		delay(DelayTime[i]);
+	}
+	for (int i = 48; i < 55; ++i) {
+		tone(BUZZER_PIN, NoteArray[i], NoteTime[i]);
+		delay(DelayTime[i]);
+	}
 }
 
 void setup() {
@@ -195,5 +119,6 @@ void loop() {
 			noTone(BUZZER_PIN);
 			break;
 		}
+	
 	}
 }
